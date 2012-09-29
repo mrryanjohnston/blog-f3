@@ -1,0 +1,14 @@
+<F3:check if="{{@SESSION.user.admin}}">
+  <F3:true>
+    <F3:include href="post-admin.html"/>
+  </F3:true>
+</F3:check>
+<F3:repeat group="{{@posts}}" value="{{@post}}">
+<div class="post">
+  <h1 class="post-title"><a href="/post/{{@post->slug}}">{{@post->title}}</a></h1>
+  <p class="date">{{date('M d, Y h:ia', @post->date)}}</p>
+  {{Markdown(@post->body)}}
+  <F3:include href="comment-count.html"/>
+  <a href="/post/{{@post->slug}}#disqus_thread">comments</a>
+</div>
+</F3:repeat>

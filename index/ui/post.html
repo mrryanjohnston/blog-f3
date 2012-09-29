@@ -1,0 +1,26 @@
+<F3:check if="{{@SESSION.user.admin}}">
+  <F3:true>
+    <F3:include href="post-admin.html"/>
+  </F3:true>
+</F3:check>
+<div class="post">
+<F3:check if="{{@PARAMS.post}}">
+  <F3:true>
+    <h1 class="post-title">{{@post->title}}</h1>
+  </F3:true>
+  <F3:false>
+    <h1 class="post-title"><a href="/post/{{@post->slug}}">{{@post->title}}</a></h1>
+  </F3:false>
+</F3:check>
+  <p class="date">{{date('M d, Y h:ia', @post->date)}}</p>
+  {{Markdown(@post->body)}}
+</div>
+<F3:check if="{{@PARAMS.post}}">
+  <F3:true>
+    <F3:include href="comments.html"/>
+  </F3:true>
+  <F3:false>
+    <F3:include href="comment-count.html"/>
+    <a href="/post/{{@post->slug}}#disqus_thread">comments</a>
+  </F3:false>
+</F3:check>

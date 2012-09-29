@@ -1,0 +1,21 @@
+<div id="create-post">
+  <form method="post" class="form-horizontal">
+    <div class="control-group">
+      <label class="control-label">Title:</label>
+      <div class="controls">
+        <input type="text" name="title" value="{{@post->title}}" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Body:</label>
+      <div class="controls">
+        <textarea name="body" class="post-edit-body"/>{{@post->body}}</textarea>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <input type="submit" name="create-post" value="Create Post" class="btn"/>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,67 @@
+.post-edit-body { width: 80%; height: 300px; }
+.post {
+  margin-bottom: 30px;
+}
+.post h1.post-title {
+  font-size: 30px;
+}
+.post h1 {
+  font-size: 25px;
+}
+.post h2 {
+  font-size: 20px;
+}
+.post h3, .post h4, .post h5 {
+  font-size: 18px;
+}
+.post .date {
+  font-style: italic;
+}
+#header {
+  margin-bottom: 20px;
+}
+#header h1 {
+  font-family: 'Just Me Again Down Here', cursive;
+  font-size: 45px;
+}
+#header h1 a,
+#header h1 a.hover {
+  color: #333;
+  text-decoration: none;
+}
+#menu .nav {
+  display: inline-block;
+  float: right;
+  margin-top: 15px;
+}
+#content {
+}
+body {
+  background-image: url('/ui/img/bg.png');
+  border-top: 5px solid;
+}
+#about-me img {
+  float: left;
+  padding: 5px;
+  margin-right: 10px;
+  background: white;
+  border: 1px solid #CCC;
+  -moz-box-shadow:    3px 3px 5px 0px #999;
+  -webkit-box-shadow: 3px 3px 5px 0px #999;
+  box-shadow:         3px 3px 5px 0px #999;
+}
+/* Large desktop */
+@media (min-width: 1200px) {
+.container {
+  width: 940px;
+}
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { ... }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { ... }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { ... }

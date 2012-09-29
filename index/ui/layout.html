@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{@sitename}}: {{trim(@title)}}</title>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/ui/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ui/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/ui/css/style.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row-fluid">
+        <div id="header" class="span3">
+          <h1><a href="/">{{@sitename}}</a></h1>
+        </div>
+        <div id="menu" class="span9">
+          <ul class="nav nav-pills">
+            <li><a href="/">Home</a></li>
+            <li><a href="/post">Archive</a></li>
+          </ul>
+        </div>
+      </div>
+      <F3:check if="{{count(@messages)}}">
+      <div class="row-fluid">
+        <div id="messages" class="span12">
+          <F3:repeat group="{{@messages}}" value="{{@message}}">
+          <p>{{trim(@message)}}</p>
+          </F3:repeat>
+        </div>
+      </div>
+      </F3:check>
+      <div class="row-fluid">
+        <div id="content" class="span7">
+          <F3:include href="{{@content}}"/>
+        </div>
+        <div id="about-me" class="span5">
+          <h4>About me</h4>
+          <img src="{{@twitter_profile->profile_image_url}}"/>
+          <p>{{@twitter_profile->description}}</p>
+          <p><a href="https://twitter.com/{{@twitter_profile->screen_name}}" target="_blank">@{{@twitter_profile->screen_name}}</a></p>
+        </div>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/ui/js/bootstrap.min.js"></script>
+  </body>
+</html>
