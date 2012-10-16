@@ -12,3 +12,17 @@
   <a href="/post/{{@post->slug}}#disqus_thread">comments</a>
 </div>
 </F3:repeat>
+<div id="pager">
+  <ul class="pager">
+  <F3:check if="{{@pages > @page}}">
+    <F3:true>
+    <li class="previous"><a href="/post?page={{@page+2}}">&larr; Older</a></li>
+    </F3:true>
+  </F3:check>
+  <F3:check if="{{@page>0}}">
+    <F3:true>
+    <li class="next"><a href="/post?page={{@page}}">Newer &rarr;</a></li>
+    </F3:true>
+  </F3:check>
+  </ul>
+</div>

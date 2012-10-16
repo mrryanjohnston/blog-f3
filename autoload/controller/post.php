@@ -38,8 +38,20 @@ class post {
     return;
   }
   public function getList() {
+    // If there's a 'page' number in the get request, return the offset
+    $page    = \F3::get('GET.page');
+    if (!is_numeric($page) || !$page || $page < 0) {
+      $page = 0;
+    } else {
+      $page--;
+    }
     $posts   = new \Axon('posts');
-    $posts   = $posts->find(NULL,'date DESC',10);
+    // This is the number of pages to use pagination for.
+    $pages   = ceil(count($posts->find())/10) - 1;
+    // If the current requested page is more than the amount of pages, set it to the max page.
+    if ($page > $pages)
+      $page  = $pages;
+    $posts   = $posts->find(NULL,'date DESC',10,$page*10);
     foreach($posts as $post) {
       // Trim at 260 chars until a breaking character
       // Found here: http://stackoverflow.com/a/1233329
@@ -54,6 +66,8 @@ class post {
     }
     $title   = 'Posts';
     $content = 'posts.html';
+    \F3::set('page', $page);
+    \F3::set('pages', $pages);
     \F3::set('posts', $posts);
     \F3::set('content', $content);
     \F3::set('title', $title);
